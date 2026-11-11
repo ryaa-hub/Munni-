@@ -1,1 +1,196 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I am Sorry! 🥺</title>
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating background shapes */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.4);
+            animation: float 6s infinite ease-in-out;
+            user-select: none;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(15deg); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            min-height: 50px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-yes {
+            background-color: #ff477e;
+            color: white;
+        }
+
+        .btn-yes:hover {
+            background-color: #ff0054;
+            transform: scale(1.05);
+        }
+
+        .btn-no {
+            background-color: #e0e0e0;
+            color: #666;
+            position: relative;
+        }
+
+        /* Success Message Card */
+        .forgiven-card {
+            display: none;
+        }
+
+        .forgiven-card h2 {
+            color: #ff477e;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Floating Hearts -->
+    <div class="heart" style="top: 10%; left: 10%; font-size: 30px; animation-delay: 0s;">💖</div>
+    <div class="heart" style="top: 70%; left: 15%; font-size: 40px; animation-delay: 1s;">✨</div>
+    <div class="heart" style="top: 20%; left: 80%; font-size: 35px; animation-delay: 2s;">🌸</div>
+    <div class="heart" style="top: 80%; left: 85%; font-size: 25px; animation-delay: 1.5s;">💕</div>
+
+    <!-- Main Card -->
+    <div class="card" id="mainCard">
+        <div class="emoji">🥺</div>
+        <h1>I'm So Sorry, My Friend!</h1>
+        <p>Ami jani amar bhul hoye geche... apne ki amake maff kore debe? Amar khub kharap lagche!</p>
+      
+        <div class="btn-container">
+            <button class="btn btn-yes" onclick="forgiveMe()">Maff Kore Dilam 💖</button>
+            <button class="btn btn-no" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">Ekhono Rag Kore Achi 😤</button>
+        </div>
+    </div>
+
+    <!-- Forgiven Card (Shown after clicking Yes) -->
+    <div class="card forgiven-card" id="forgivenCard">
+        <div class="emoji">🥳🎉</div>
+        <h2>Yay! Thank You!</h2>
+        <p>Apne shotti khub bhalo ! Cholo shob rag bhule ek sata abar kota bole ☕❤️</p>
+    </div>
+
+    <script>
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 100);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 100);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${Math.max(20, x)}px`;
+            noBtn.style.top = `${Math.max(20, y)}px`;
+        }
+
+        function forgiveMe() {
+            // Hide main card & show forgiven card
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('forgivenCard').style.display = 'block';
+
+            // Trigger Confetti Animation
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            // Extra Confetti Burst
+            setTimeout(() => {
+                confetti({
+                    particleCount: 50,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                confetti({
+                    particleCount: 50,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+            }, 300);
+        }
+    </script>
+</body>
+</html>
