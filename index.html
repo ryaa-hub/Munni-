@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Apology for Munni 💗</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #ff4f87;
+            --deep-pink: #e92e72;
+            --light-pink: #ffe5ef;
+            --text: #51414a;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 25px 15px;
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                radial-gradient(circle at 10% 15%, #fff1f5 0, transparent 30%),
+                radial-gradient(circle at 90% 85%, #ffc4d8 0, transparent 35%),
+                linear-gradient(135deg, #ff9aaf, #f9c5e1, #fbc9d9);
+        }
+
+        /* Floating Background */
+
+        .floating {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.55;
+            animation: float 7s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .floating:nth-child(1) {
+            top: 10%;
+            left: 8%;
+            font-size: 35px;
+        }
+
+        .floating:nth-child(2) {
+            top: 75%;
+            left: 12%;
+            font-size: 28px;
+            animation-delay: 2s;
+        }
+
+        .floating:nth-child(3) {
+            top: 15%;
+            right: 10%;
+            font-size: 38px;
+            animation-delay: 1s;
+        }
+
+        .floating:nth-child(4) {
+            bottom: 12%;
+            right: 9%;
+            font-size: 32px;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0);
+            }
+            50% {
+                transform: translateY(-25px) rotate(12deg);
+            }
+        }
+
+        /* Main Card */
+
+        .card {
+            width: 100%;
+            max-width: 440px;
+            padding: 42px 30px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 30px;
+
+            box-shadow:
+                0 25px 70px rgba(178, 53, 105, 0.16),
+                inset 0 1px 1px rgba(255,255,255,0.9);
+
+            animation: appear 0.8s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Badge */
+
+        .badge {
+            display: inline-block;
+            padding: 8px 17px;
+            border-radius: 50px;
+
+            background: #fff0f5;
+            color: #e83e79;
+
+            border: 1px solid #ffd0df;
+
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            margin-bottom: 22px;
+        }
+
+        /* Emoji */
+
+        .main-emoji {
+            font-size: 68px;
+            display: block;
+            margin-bottom: 18px;
+
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        /* Text */
+
+        h1 {
+            font-size: 27px;
+            line-height: 1.4;
+            color: #4d3441;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .name {
+            display: inline-block;
+            color: var(--pink);
+            position: relative;
+        }
+
+        .name::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 3px;
+            border-radius: 10px;
+            background: #ffb3cc;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #77636e;
+            margin-bottom: 28px;
+            font-weight: 400;
+        }
+
+        /* Buttons */
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            border: none;
+            padding: 13px 20px;
+            border-radius: 50px;
+
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .yes-btn {
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #ff6999,
+                #ed397c
+            );
+
+            box-shadow: 0 8px 20px rgba(237, 57, 124, 0.3);
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(237, 57, 124, 0.4);
+        }
+
+        .no-btn {
+            color: #786b72;
+            background: #f2edf0;
+            border: 1px solid #e8dfe4;
+        }
+
+        .no-btn:hover {
+            background: #e9e0e5;
+        }
+
+        button:focus-visible {
+            outline: 3px solid #a82b61;
+            outline-offset: 4px;
+        }
+
+        /* Footer */
+
+        .footer {
+            margin-top: 30px;
+            color: #b58a9d;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        /* Success Screen */
+
+        .success {
+            display: none;
+        }
+
+        .success h2 {
+            color: #e83e79;
+            font-size: 27px;
+            margin-bottom: 14px;
+        }
+
+        .success .description {
+            margin-bottom: 20px;
+        }
+
+        .success-emoji {
+            font-size: 75px;
+            display: block;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .heart-line {
+            color: #ff5a91;
+            font-size: 22px;
+            letter-spacing: 8px;
+            margin-top: 10px;
+        }
+
+        /* Confetti */
+
+        .confetti {
+            position: fixed;
+            top: -15px;
+            width: 9px;
+            height: 13px;
+            z-index: 20;
+            pointer-events: none;
+            animation: fall 3s linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 35px 22px;
+                border-radius: 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .description {
+                font-size: 13px;
+            }
+
+            .main-emoji {
+                font-size: 60px;
+            }
+
+            .btn {
+                padding: 12px 17px;
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Decorations -->
+
+    <div class="floating">💗</div>
+    <div class="floating">✨</div>
+    <div class="floating">🌸</div>
+    <div class="floating">💕</div>
+
+    <!-- Main Card -->
+
+    <main class="card" id="mainCard">
+
+        <div class="badge">
+            ✨ A Little Message For You ✨
+        </div>
+
+        <span class="main-emoji">🥺</span>
+
+        <h1>
+            I'm So Sorry,
+            <span class="name">Munni</span>! 💗
+        </h1>
+
+        <p class="description">
+            Ami jani amar bhul hoye geche...
+            Please amake maaf kore dao na, Munni! 🥺
+            Tumi rag kore thakle amar ekdom bhalo lage na.
+            Cholo na, shob rag bhule abar ager moto bondhutto kori! 🌷
+        </p>
+
+        <div class="buttons">
+
+            <button class="btn yes-btn" onclick="forgiveMe()">
+                Maaf Kore Dilam 💖
+            </button>
+
+            <button class="btn no-btn" onclick="stillAngry()">
+                Ekhono Rag Kore Achi 😤
+            </button>
+
+        </div>
+
+        <div class="footer">
+            MADE WITH CARE & FRIENDSHIP 💗
+        </div>
+
+    </main>
+
+    <!-- Success Card -->
+
+    <section class="card success" id="successCard">
+
+        <span class="success-emoji">🥳🎉</span>
+
+        <h2>
+            Yay! Thank You,
+            <span class="name">Munni</span>! 💕
+        </h2>
+
+        <p class="description">
+            Tumi shotti onek bhalo ekjon bondhu!
+            Thank you amake maaf korar jonno.
+            Cholo shob rag bhule abar ager moto
+            hashbo, golpo korbo ar bhalo bondhutto
+            bojay rakhbo! 🌸❤️
+        </p>
+
+        <div class="heart-line">
+            ♥ ♥ ♥ ♥ ♥
+        </div>
+
+        <div class="footer">
+            OUR FRIENDSHIP IS SPECIAL ✨
+        </div>
+
+    </section>
+
+    <script>
+
+        // Forgiveness Button
+
+        function forgiveMe() {
+
+            document.getElementById("mainCard").style.display = "none";
+
+            const success = document.getElementById("successCard");
+
+            success.style.display = "block";
+
+            success.style.animation = "appear 0.8s ease";
+
+            createConfetti(130);
+
+        }
+
+        // Still Angry Button
+
+        function stillAngry() {
+
+            const messages = [
+                "Arey Munni, ektu bhebe dekho na! 🥺",
+                "Please rag koro na! 🌸",
+                "Ekta chance dao na! 💗",
+                "Sorry bolchi to! 🥹",
+                "Amader bondhutto ta special! 💕"
+            ];
+
+            const randomMessage =
+                messages[Math.floor(Math.random() * messages.length)];
+
+            alert(randomMessage);
+
+        }
+
+        // Confetti Animation
+
+        function createConfetti(amount) {
+
+            const colors = [
+                "#ff477e",
+                "#ffb3cc",
+                "#ffd166",
+                "#c77dff",
+                "#ff85a1",
+                "#ffffff"
+            ];
+
+            for (let i = 0; i < amount; i++) {
+
+                const piece = document.createElement("div");
+
+                piece.className = "confetti";
+
+                piece.style.left = Math.random() * 100 + "vw";
+
+                piece.style.backgroundColor =
+                    colors[Math.floor(Math.random() * colors.length)];
+
+                piece.style.animationDuration =
+                    (Math.random() * 2 + 2) + "s";
+
+                piece.style.animationDelay =
+                    Math.random() * 0.8 + "s";
+
+                piece.style.borderRadius =
+                    Math.random() > 0.5 ? "50%" : "2px";
+
+                document.body.appendChild(piece);
+
+                setTimeout(() => {
+                    piece.remove();
+                }, 5000);
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
